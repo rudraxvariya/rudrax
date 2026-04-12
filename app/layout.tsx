@@ -111,7 +111,7 @@ export default function RootLayout({
               url: "https://rudraxvariya.github.io",
               image: "https://rudraxvariya.github.io/profile.jpg",
               sameAs: [
-                "https://linkedin.com/in/rudrax-variya-4675a1142",
+                "https://linkedin.com/in/rudraxvariya",
                 "https://github.com/rudraxvariya",
                 "https://twitter.com/rudrax_variya",
                 "https://medium.com/@variya.rudrax",

@@ -17,8 +17,8 @@ const SOCIALS = [
   },
   {
     label: "LinkedIn",
-    value: "rudrax-variya-4675a1142",
-    href: "https://linkedin.com/in/rudrax-variya-4675a1142",
+    value: "rudraxvariya",
+    href: "https://linkedin.com/in/rudraxvariya",
     color: "#0A66C2",
     icon: (
       <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
