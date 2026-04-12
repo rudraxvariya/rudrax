@@ -70,6 +70,8 @@ const EDUCATION = {
 }
 
 const AWARDS = [
+  { title: "Employee of the Quarter", org: "Bacancy Services Pvt. Ltd.", year: "Q1 2025" },
+  { title: "Team of the Quarter", org: "Bacancy Services Pvt. Ltd.", year: "Q2 2025" },
   { title: "Top Performer — Rockstar Rookie", org: "Bacancy Services Pvt. Ltd.", year: "May 2024" },
   { title: "Skill Enhancement Annual Service Award", org: "WebMobTech Solutions Pvt. Ltd.", year: "December 2021" },
   { title: "Hacktoberfest Participant", org: "DigitalOcean", year: "Oct 2020 – Oct 2022" },
@@ -226,7 +228,7 @@ export function Experience() {
           <div className="text-center mb-8">
             <span className="font-mono text-xs text-amber-400 tracking-widest uppercase">🏆 Awards & Activities</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {AWARDS.map((a, i) => (
               <motion.div
                 key={a.title}
@@ -236,7 +238,7 @@ export function Experience() {
                 className="glass-card rounded-xl p-4 text-center hover:border-amber-500/30 transition-colors"
               >
                 <div className="text-2xl mb-2">
-                  {i === 0 ? "🥇" : i === 1 ? "🏅" : "🎯"}
+                  {i === 0 ? "🏆" : i === 1 ? "🤝" : i === 2 ? "🥇" : i === 3 ? "🏅" : "🎯"}
                 </div>
                 <div className="text-white text-xs font-semibold leading-snug mb-1">{a.title}</div>
                 <div className="text-zinc-500 text-xs font-mono">{a.org}</div>
