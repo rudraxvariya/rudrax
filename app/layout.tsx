@@ -156,7 +156,7 @@ export default function RootLayout({
             }),
           }}
         />
-      </head>
+<meta name="google-site-verification" content="7_malGJBCFcbN743h9PCVO__bwP_odqlAC8i1p51XHU" />      </head>
       <body suppressHydrationWarning className="noise">
         <ScrollProgress />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
