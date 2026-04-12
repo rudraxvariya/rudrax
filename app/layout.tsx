@@ -18,20 +18,75 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Rudrax Variya — Full-Stack Developer",
+  metadataBase: new URL("https://rudraxvariya.github.io"),
+  title: {
+    default: "Rudrax Variya — Frontend Engineer | React & Next.js Developer",
+    template: "%s | Rudrax Variya",
+  },
   description:
-    "Portfolio of Rudrax Variya — Full-Stack Developer at Bacancy Technologies. React · Next.js · Node.js · TypeScript · 5+ years of experience.",
-  keywords: ["Rudrax Variya", "Full Stack Developer", "React Developer", "Next.js", "Ahmedabad", "India", "GetGround"],
+    "Rudrax Variya is a Frontend-focused Software Engineer from Ahmedabad, India with 5+ years of experience building scalable web applications using React, Next.js, TypeScript, and Node.js. Currently at Bacancy Technology.",
+  keywords: [
+    "Rudrax Variya",
+    "rudrax variya",
+    "rudraxvariya",
+    "Rudrax Variya developer",
+    "Rudrax Variya portfolio",
+    "Rudrax Variya React developer",
+    "Rudrax Variya frontend engineer",
+    "Frontend Developer Ahmedabad",
+    "React Developer India",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "Bacancy Technology developer",
+    "Software Engineer Ahmedabad",
+    "Software Engineer Gujarat",
+    "LDRP ITR graduate",
+    "Web Developer India",
+  ],
+  authors: [{ name: "Rudrax Variya", url: "https://rudraxvariya.github.io" }],
+  creator: "Rudrax Variya",
+  publisher: "Rudrax Variya",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Rudrax Variya — Full-Stack Developer",
-    description: "Full-Stack Developer. React · Next.js · Node.js · TypeScript.",
     type: "website",
+    locale: "en_US",
     url: "https://rudraxvariya.github.io",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    siteName: "Rudrax Variya",
+    title: "Rudrax Variya — Frontend Engineer | React & Next.js Developer",
+    description:
+      "Rudrax Variya — Frontend-focused Software Engineer with 5+ years of experience. Specializing in React, Next.js, TypeScript. Based in Ahmedabad, India.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Rudrax Variya — Frontend Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    title: "Rudrax Variya — Frontend Engineer | React & Next.js Developer",
+    description:
+      "Frontend-focused Software Engineer with 5+ years of experience. React, Next.js, TypeScript. Based in Ahmedabad, India.",
     creator: "@rudrax_variya",
+    images: ["/og-image.jpg"],
+  },
+  alternates: {
+    canonical: "https://rudraxvariya.github.io",
+  },
+  verification: {
+    google: "", // add your Google Search Console verification token here
   },
 }
 
@@ -44,6 +99,64 @@ export default function RootLayout({
       className={cn("dark", spaceGrotesk.variable, jetbrainsMono.variable)}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="canonical" href="https://rudraxvariya.github.io" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Rudrax Variya",
+              url: "https://rudraxvariya.github.io",
+              image: "https://rudraxvariya.github.io/profile.jpg",
+              sameAs: [
+                "https://linkedin.com/in/rudrax-variya-4675a1142",
+                "https://github.com/rudraxvariya",
+                "https://twitter.com/rudrax_variya",
+                "https://medium.com/@variya.rudrax",
+              ],
+              jobTitle: "Frontend Engineer",
+              worksFor: {
+                "@type": "Organization",
+                name: "Bacancy Technology",
+                url: "https://bacancy.com",
+              },
+              alumniOf: {
+                "@type": "CollegeOrUniversity",
+                name: "L.D.R.P. Institute of Technology and Research",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Gandhinagar",
+                  addressRegion: "Gujarat",
+                  addressCountry: "IN",
+                },
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Ahmedabad",
+                addressRegion: "Gujarat",
+                addressCountry: "IN",
+              },
+              email: "variya.rudrax@gmail.com",
+              knowsAbout: [
+                "React.js",
+                "Next.js",
+                "TypeScript",
+                "JavaScript",
+                "Node.js",
+                "Redux",
+                "GraphQL",
+                "Tailwind CSS",
+                "Frontend Development",
+                "Web Development",
+              ],
+              description:
+                "Rudrax Variya is a Frontend-focused Software Engineer from Ahmedabad, India with 5+ years of experience building scalable web applications.",
+            }),
+          }}
+        />
+      </head>
       <body suppressHydrationWarning className="noise">
         <ScrollProgress />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
