@@ -1,18 +1,54 @@
 "use client"
 
-import { useActionState, useRef } from "react"
+import { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { sendContactEmail, type ContactFormState } from "@/app/actions/contact"
 
-const initial: ContactFormState = { status: "idle", message: "" }
+type Status = "idle" | "sending" | "success" | "error"
+
+// Set your Formspree form ID here — get one free at https://formspree.io
+// e.g. "https://formspree.io/f/xpwzabcd"
+const FORMSPREE_URL = "https://formspree.io/f/xpwzabcd"
 
 export function ContactForm() {
-  const [state, action, pending] = useActionState(sendContactEmail, initial)
+  const [status, setStatus] = useState<Status>("idle")
+  const [message, setMessage] = useState("")
   const formRef = useRef<HTMLFormElement>(null)
 
-  // Reset form on success
-  if (state.status === "success" && formRef.current) {
-    formRef.current.reset()
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setStatus("sending")
+
+    const data = new FormData(e.currentTarget)
+    const name = (data.get("name") as string)?.trim()
+    const email = (data.get("email") as string)?.trim()
+    const msg = (data.get("message") as string)?.trim()
+
+    if (!name || !email || !msg) {
+      setStatus("error")
+      setMessage("Please fill in all required fields.")
+      return
+    }
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      })
+
+      if (res.ok) {
+        setStatus("success")
+        setMessage("Message sent! I'll get back to you soon.")
+        formRef.current?.reset()
+      } else {
+        throw new Error()
+      }
+    } catch {
+      setStatus("error")
+      setMessage("Something went wrong. Please email me directly.")
+    }
+
+    setTimeout(() => setStatus("idle"), 5000)
   }
 
   return (
@@ -27,7 +63,7 @@ export function ContactForm() {
         <p className="text-zinc-500 text-sm font-mono">I usually reply within 24 hours.</p>
       </div>
 
-      <form ref={formRef} action={action} className="space-y-4">
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label htmlFor="name" className="block text-xs font-mono text-zinc-500 mb-1.5">
@@ -84,31 +120,30 @@ export function ContactForm() {
           />
         </div>
 
-        {/* Status message */}
         <AnimatePresence>
-          {state.status !== "idle" && (
+          {status !== "idle" && status !== "sending" && (
             <motion.div
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-mono ${
-                state.status === "success"
+                status === "success"
                   ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-400"
                   : "bg-red-500/10 border border-red-500/30 text-red-400"
               }`}
             >
-              <span>{state.status === "success" ? "✓" : "✕"}</span>
-              {state.message}
+              <span>{status === "success" ? "✓" : "✕"}</span>
+              {message}
             </motion.div>
           )}
         </AnimatePresence>
 
         <button
           type="submit"
-          disabled={pending}
+          disabled={status === "sending"}
           className="w-full px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-sm transition-all duration-200 glow-purple flex items-center justify-center gap-2"
         >
-          {pending ? (
+          {status === "sending" ? (
             <>
               <motion.div
                 animate={{ rotate: 360 }}
