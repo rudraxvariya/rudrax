@@ -3,6 +3,9 @@ import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollProgress } from "@/components/scroll-progress"
+import { CustomCursor } from "@/components/custom-cursor"
+import { PageTransition } from "@/components/page-transition"
+import { Analytics } from "@vercel/analytics/next"
 import { cn } from "@/lib/utils"
 
 const spaceGrotesk = Space_Grotesk({
@@ -159,9 +162,11 @@ export default function RootLayout({
 <meta name="google-site-verification" content="7_malGJBCFcbN743h9PCVO__bwP_odqlAC8i1p51XHU" />      </head>
       <body suppressHydrationWarning className="noise">
         <ScrollProgress />
+        <CustomCursor />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-          {children}
+          <PageTransition>{children}</PageTransition>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

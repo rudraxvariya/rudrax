@@ -87,13 +87,25 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <a
-          href="#contact"
-          className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-all duration-200 glow-purple hover:scale-105"
-        >
-          Hire me
-        </a>
+        {/* CTAs */}
+        <div className="hidden md:flex items-center gap-2">
+          <a
+            href="/resume.pdf"
+            download="Rudrax_Variya_Resume.pdf"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 text-sm font-semibold transition-all duration-200 hover:bg-white/5"
+          >
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current" strokeWidth={2}>
+              <path d="M12 15V3m0 12-4-4m4 4 4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Resume
+          </a>
+          <a
+            href="#contact"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-all duration-200 glow-purple hover:scale-105"
+          >
+            Hire me
+          </a>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -125,7 +137,17 @@ export function Navbar() {
               </a>
             </li>
           ))}
-          <li className="pt-2">
+          <li className="pt-2 flex flex-col gap-2">
+            <a
+              href="/resume.pdf"
+              download="Rudrax_Variya_Resume.pdf"
+              className="flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-zinc-700 text-zinc-400 text-sm font-semibold"
+            >
+              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current" strokeWidth={2}>
+                <path d="M12 15V3m0 12-4-4m4 4 4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Resume
+            </a>
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}

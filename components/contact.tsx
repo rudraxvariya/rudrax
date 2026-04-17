@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
+import { ContactForm } from "@/components/contact-form"
 
 const SOCIALS = [
   {
@@ -107,6 +108,18 @@ export function Contact() {
             </p>
           </motion.div>
 
+          {/* Contact Form */}
+          <motion.div variants={item} className="mb-10 sm:mb-14">
+            <ContactForm />
+          </motion.div>
+
+          {/* Divider */}
+          <motion.div variants={item} className="flex items-center gap-4 mb-8">
+            <div className="flex-1 h-px bg-white/5" />
+            <span className="text-xs text-zinc-600 font-mono tracking-widest whitespace-nowrap">OR REACH ME DIRECTLY</span>
+            <div className="flex-1 h-px bg-white/5" />
+          </motion.div>
+
           {/* Big email CTA */}
           <motion.div variants={item} className="flex justify-center mb-10 sm:mb-16 px-2">
             <button
@@ -128,7 +141,7 @@ export function Contact() {
           </motion.div>
 
           {/* Divider */}
-          <motion.div variants={item} className="flex items-center gap-4 mb-8 sm:mb-12">
+          <motion.div variants={item} className="flex items-center gap-4 mb-8 sm:mb-10">
             <div className="flex-1 h-px bg-white/5" />
             <span className="text-xs text-zinc-600 font-mono tracking-widest whitespace-nowrap">OR FIND ME ON</span>
             <div className="flex-1 h-px bg-white/5" />

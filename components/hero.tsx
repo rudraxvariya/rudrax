@@ -242,6 +242,18 @@ export function Hero() {
           >
             Let&apos;s Talk
           </MagneticBtn>
+          <motion.a
+            href="/resume.pdf"
+            download="Rudrax_Variya_Resume.pdf"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            className="w-full sm:w-auto px-8 py-4 rounded-2xl border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 font-bold text-sm transition-all duration-300 hover:bg-white/5 text-center flex items-center justify-center gap-2"
+          >
+            <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current" strokeWidth={2}>
+              <path d="M12 15V3m0 12-4-4m4 4 4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Resume
+          </motion.a>
         </motion.div>
 
         {/* Socials */}
